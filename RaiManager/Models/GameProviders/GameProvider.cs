@@ -200,12 +200,28 @@ ignoreDisableSwitch=true");
             process.StartInfo.UseShellExecute = true;
             process.StartInfo.Verb = "runas";
             process.StartInfo.FileName = "cmd";
-            process.StartInfo.Arguments = $"/k \"{GamePath}\" & exit";
+            //process.StartInfo.Arguments = $"/k \"{GamePath}\" & exit";
+            process.StartInfo.Arguments = $"/k \"steam://rungameid/622650\" & exit";            
             process.Start();
         }
         else
         {
-            Process.Start(GamePath);
+            //Process.Start(GamePath);
+            //Process.Start("CMD.exe", "steam://rungameid/622650");
+
+            Process cmd = new Process();
+            cmd.StartInfo.FileName = "cmd.exe";
+            cmd.StartInfo.RedirectStandardInput = true;
+            cmd.StartInfo.RedirectStandardOutput = true;
+            cmd.StartInfo.CreateNoWindow = true;
+            cmd.StartInfo.UseShellExecute = false;
+            cmd.Start();
+
+            cmd.StandardInput.WriteLine("start steam://rungameid/622650");
+            cmd.StandardInput.Flush();
+            cmd.StandardInput.Close();
+            cmd.WaitForExit();
+            Console.WriteLine(cmd.StandardOutput.ReadToEnd());
         }
     }
     

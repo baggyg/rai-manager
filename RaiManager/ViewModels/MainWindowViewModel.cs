@@ -15,7 +15,7 @@ namespace RaiManager.ViewModels;
 
 public class MainWindowViewModel : ViewModelBase
 {
-    private string _windowTitle = $"Rai Manager";
+    private string _windowTitle = $"Team Beef PCVR Installer";
     public string WindowTitle
     {
         get => _windowTitle;
@@ -160,6 +160,6 @@ public class MainWindowViewModel : ViewModelBase
 
     private void SetUpWindowTitle()
     {
-        WindowTitle = $"Rai Manager {Assembly.GetExecutingAssembly().GetName().Version}";
+        WindowTitle = $"Team Beef PCVR Installer {Assembly.GetExecutingAssembly().GetName().Version}";
     }
 }
